@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add a new product</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    textarea,
+    select,
+    input[type="number"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <b>{{ message }}</b>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <h1>Add a new product</h1>
+  <form method="POST" action="" enctype="multipart/form-data">
+    <input name="name" placeholder="Enter item name" type="text"><br>
+    <textarea name="description" placeholder="Enter item description" rows="4" columns="200"></textarea><br>
+    <input name="quantity" placeholder="Enter item quantity" type="text">
+    <select name="enum" id="">
+      <option>electronics</option>
+      <option>grocery</option>
+      <option>fashion</option>
+      <option>home&kitchen</option>
+    </select>
+    <input name="price" placeholder="Enter item price" type="number">
+    <input name="file" type="file">
+    <button type="submit">Submit</button>
+  </form>
+</body>
+
+</html>

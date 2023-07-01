@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .explore-menu-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .menu-item-card form {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column; /* Changed to column */
+    align-items: center;
+  }
+
+  .menu-item-card form b {
+    margin-bottom: 1rem; /* Changed to bottom margin */
+  }
+
+  .menu-item-card form select {
+    margin-bottom: 1rem; /* Changed to bottom margin */
+    padding: 0.5rem;
+  }
+
+  .menu-item-card form button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem; /* Added bottom margin */
+  }
+
+  .menu-item-card form button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="explore-menu-section pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      {% for i in data %}
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <a href="{{url_for('detail',itemid=i[0])}}">
+            <img src="{{url_for('static',filename=i[0]+'.jpg')}}" class="menu-item-image w-100" />
+          </a>
+          <h1 class="menu-card-title">
+            <a href="{{url_for('detail',itemid=i[0])}}">{{i[1]}}</a>
+          </h1>
+          <form method="post">
+            <b>Price:</b>{{i[5]}}
+            <select name="quantity" id="">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select><br>
+            <button type="submit" formaction="{{url_for('cart',itemid=i[0],name=i[1],price=i[5])}}" class="btn btn-primary">Add to Cart</button>
+            <button type="submit" formaction="{{url_for('pay',itemid=i[0],name=i[1],price=i[5])}}" class="btn btn-primary">Buy Now</button>
+          </form>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

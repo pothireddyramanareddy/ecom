@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add note</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .btnstyle {
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 25px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .button-52 {
+            background-color: #04AA6D;
+            color: white;
+            padding: 4px 20px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 97%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="{{url_for('admindashboard')}}"><button class="button-52">Back</button></a>
+    <h1>Products Status</h1>
+    <table>
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[5]}}</td>
+            <td><a href="{{url_for('update',itemid=i[0])}}">Update</a></td>
+            <td><a href="{{url_for('delete',itemid=i[0])}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

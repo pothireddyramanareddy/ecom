@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  /* CSS styles */
+  .explore-menu-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .menu-item-card {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .menu-item-image {
+    height: 100%;
+    width: 100%;
+  }
+
+  .menu-card-title {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0069d9;
+  }
+</style>
+
+{% if items == 'empty' %}
+<b>No items in cart</b>
+{% else %}
+<div class="explore-menu-section pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      {% for i in items %}
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="shadow menu-item-card p-3 mb-3">
+          <img src="{{url_for('static',filename=i+'.jpg')}}" class="menu-item-image h-100 w-100" />
+          <h1 class="menu-card-title">{{items[i][0]}}</h1>
+          <b>Price:</b> {{items[i][-1]}}<br>
+          <b>Quantity:</b> {{items[i][1]}}<br>
+          <a href="{{url_for('cartpop',itemid=i)}}"><button>Remove</button></a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

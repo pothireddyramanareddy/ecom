@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  /* CSS styles */
+  .container {
+    margin-top: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 550px;
+    width: 550px;
+  }
+
+  select {
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin-right: 10px;
+  }
+</style>
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <center>
+        <label>
+          <h1><b><u>Name: {{items[1]}}</u></b></h1>
+        </label>
+        <br>
+      </center>
+      <img src="{{url_for('static',filename=items[0]+'.jpg')}}" />
+      <br>
+    </div>
+    <div class="col-md-4">
+      <h3><b>Description:</b></h3>
+      <p>{{items[2]}}</p>
+      <h3><b>Category:</b> {{items[4]}}</h3>
+      <h3><b>Price:</b> {{items[5]}}</h3>
+      <br>
+    </div>
+    <div class="col-md-2">
+      <form method="post">
+        <select name="quantity" id="">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+        <br>
+        <button type="submit" formaction="#"
+          class="btn btn-primary">Add to Cart</button>
+        <button type="submit" formaction="#"
+          class="btn btn-primary">Buy Now</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
